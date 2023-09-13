@@ -18,7 +18,6 @@ put nome_arquivo.txt
 get nome_arquivo.txt
 
 # ====== Navegacao ====== #
-
 # pwd no host remoto
 pwd
 
