@@ -1,0 +1,3 @@
+# Clonar repositorio
+mkdir novapasta
+git clone https://github.com/alefyjp/infradocs
