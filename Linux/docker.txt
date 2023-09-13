@@ -1,0 +1,17 @@
+#====================================================================================
+# DOCKER
+# Autor: Alefy
+# Autalizacao: 16/06/2023
+#====================================================================================
+# Novo container
+docker run --name container-teste nginx
+docker run --name container-teste -p 80:8080 nginx
+
+# Copiar arquivo ou diretorio do container
+docker cp container-teste:/etc/nginx/teste.txt /opt/docker/nginx/
+docker cp container-teste:/etc/nginx/. /opt/docker/nginx
+
+# Conectar ao container
+docker exec -it teste sh
+
+
