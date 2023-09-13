@@ -12,5 +12,6 @@ apt install nmap -y
 nmap --script ssl-enum-ciphers -p 443 dominio.com.br
 
 
+nmap -T4 -A dominio.com.br
 
 
