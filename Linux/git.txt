@@ -14,9 +14,12 @@ mkdir Git
 git clone https://github.com/alefyjp/infradocs
 
 # ===== Baixar informacoes ===== #
+
+# Pull
 git pull https://github.com/alefyjp/infradocs
 
 # ===== Enviar dados ===== #
 
+# commit
 git commit 
 git push https://github.com/alefyjp/infradocs
