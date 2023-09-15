@@ -1,0 +1,37 @@
+# ---------------------------------------------------------------------------------------------------------------------
+# 12 - Banco de dados Mysql
+# ---------------------------------------------------------------------------------------------------------------------
+
+# --- Instalação --- #
+apt install -y mariadb-server 
+
+# --- Primeiro acesso --- #
+mysql -u root                              # Acessando com usuário sem senha
+mysql -u root -pdebian                     # Acessando com senha
+
+# --- Criar novo banco --- #
+mysql -u root -p
+mysql> create database banco_teste character set utf8 collate utf8_bin;     # Não insira a string "mysql>" junto aos comandos
+mysql> quit;
+
+# --- Criar nova tabela --- #
+create table contatos ( nome varchar(50), numero varchar(50) );
+
+# --- Criar novo usuário --- #
+mysql> create user usuario_teste@localhost identified by 'debian';
+mysql> grant all privileges on banco_teste.* to usuario_teste@localhost;
+
+# --- Select --- #
+SELECT * FROM tabela;
+
+# --- Insert --- #
+INSERT INTO tabela_teste VALUES (29.5);
+
+# --- Backup de um unico banco --- #
+
+# Realizando backup
+mysqldump -u root -p zabbix > /home/backups/backup-zabbix.sql
+
+# Restauração
+mysql -u root -p banco_criado < /home/backups/backup-zabbix.sql
+
