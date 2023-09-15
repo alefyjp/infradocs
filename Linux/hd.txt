@@ -1,6 +1,18 @@
 #================================================================================
 # HD
 #================================================================================
+# Sistema: Debian e Ubuntu
+# Atualizacao: 15/09/23
+# Autor: Alefy Gonzaga
+
+# ====== Clone ====== #
+
+# Clonar disco
+sudo dd if=/dev/sda5 of=/media/outro-disco/clone.dd bs=512 conv=noerror,sync
+
+
+# ====== Montagem e manutencao ====== #
+
 # Exibir HDs e partições identificadas pelo sistema
 ls /dev/sd*
 
