@@ -8,7 +8,7 @@ import os
 # === configuracoes === #
 
 # default
-input_default ="ACCEPT"
+input_default ="DROP"
 #forward_default="DOCKER" # DROP / ACCEPT / DOCKER
 #output_default="ACCEPT"
 
@@ -20,10 +20,11 @@ web_aberto_para = ["0.0.0.0/0"]
 #ssh
 ssh_porta = "22"
 ssh_aberto_para = ["192.168.0.0/16","172.16.0.0/16","10.0.0.0/16"]
+#ssh_aberto_para = ["192.168.0.1"]
 
 #mysql
 mysql_porta ="3306"
-mysql_aberto_para = ["172.19.0.0/24"]
+mysql_aberto_para = ["172.19.0.1"]
 
 #zabbix
 zabbix_porta ="10050"
@@ -52,7 +53,7 @@ os.system("iptables -F")
 os.system("iptables -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT")
 os.system("iptables -A INPUT -i lo -j ACCEPT")
 os.system("iptables -A OUTPUT -o lo -j ACCEPT")
-os.system("iptables -A INPUT -p tcp --dport "+ssh_porta+" -j ACCEPT")
+#os.system("iptables -A INPUT -p tcp --dport "+ssh_porta+" -j ACCEPT")
 
 # === Regras === #
 
