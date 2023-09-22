@@ -1,0 +1,14 @@
+#!/bin/python3
+# ==========================================================================================
+#  os
+# ==========================================================================================
+
+# Importar modulo do sistema operacional
+#import os
+
+# Limpar a tela
+#os.system("clear")
+
+#os.system("apt update -y")
+
+#os.system("ip address")
