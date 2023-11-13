@@ -1,0 +1,69 @@
+
+# Editar o arquivo /etc/nginx/sites-enable/default
+Vim /etc/nginx/sites-enable/default
+
+# Incluid essas linas na configuração do nginx
+
+add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
+add_header X-XSS-Protection "1; mode=block";
+
+
+# -- Exemplo --- #
+
+server {
+       #listen 80 default_server;
+       #listen [::]:80 default_server;
+ 
+# Ativa compactação automática de html
+#       gzip on;
+#       gzip_vary on;
+#       gzip_min_length 10240;
+#       gzip_proxied expired no-cache no-store private auth;
+#       gzip_types text/plain text/css text/xml text/javascript application/x-javascript application/xml;
+#       gzip_disable "MSIE [1-6]\.";
+ 
+       # SSL configuration
+       #
+       listen 443 ssl;
+       #listen [::]:443 ssl;
+ 
+       #ssl_protocols TLSv1.2 TLSv1.3; # compatibilidade
+       ssl_protocols TLSv1.3; # ideal
+       ssl_ciphers HIGH:!aNULL:!MD5;
+       
+       add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
+       add_header X-XSS-Protection "1; mode=block";
+       
+       proxy_cookie_path / "/; HTTPOnly;   Secure";
+       #testar: map -p 443 --script http-cookie-flags localhost
+ 
+       ssl_certificate /etc/letsencrypt/live/localizaracmanager.visual.com.br/fullchain.pem;
+       ssl_certificate_key /etc/letsencrypt/live/localizaracmanager.visual.com.br/privkey.pem;
+ 
+       root /var/www/html;
+       index index.html index.htm;
+
+ 
+    #letsencrypt, certbot
+    # apt-get install certbot python3-certbot-nginx
+    # mkdir -p /var/www/html/.well-known/acme-challenge/
+    location /.well-known/acme-challenge/ {
+        alias /var/www/html/.well-known/acme-challenge/;
+        try_files $uri =404;
+    }
+ 
+       #Redireciona tudo inclusive websocket
+       location / {
+               proxy_pass http://localhost:8080;
+               proxy_http_version 1.1;
+               proxy_set_header Upgrade $http_upgrade;
+               proxy_set_header Connection "Upgrade";
+               proxy_set_header Host $host;
+       }
+}
+
+
+# --- Como testar HSTS -- #
+
+nmap -sV --script=http-headers -p 80,443 localhost
+nmap --script=http-security-headers -p80,443 localhost
