@@ -24,3 +24,16 @@ set ip route default 192.168.1.1;set interface fa1 192.168.1.2 255.255.255.0 192
 boot tftp://192.168.1.1/cat4500-ipbase-mz.122-46.SG.bin
 
 copy tftp flash
+
+
+# --- Configurando portas combo ---S
+
+# Apagando configurações
+(#)
+erase startup-config
+reload
+
+(config)
+interface range gi 1/45 - 48
+
+media-type rj45
