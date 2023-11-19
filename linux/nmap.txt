@@ -1,0 +1,17 @@
+# ==========================================================================================
+# Nmap
+# ==========================================================================================
+# Sistema: Debian e Ubuntu
+# Atualizacao: 13/09/23
+# Autor: Alefy Gonzaga
+
+# ===== Instalacao ===== #
+apt install nmap -y
+
+# nmap com tls
+nmap --script ssl-enum-ciphers -p 443 dominio.com.br
+
+# nmap scanner completo
+nmap -T4 -A dominio.com.br
+
+
