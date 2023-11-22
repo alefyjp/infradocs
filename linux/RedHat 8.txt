@@ -8,8 +8,7 @@ https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/de
 --Informações sobre licença ---------------------------------------------------------------
 
 # Registrar nova instalação
-subscription-manager register --username ermacone@gmail.com --password PassDKx8cG9K2HADKuY! --auto-attach
-subscription-manager register --username alefyjp@gmail.com --password @Teste20232023 --auto-attach --force
+subscription-manager register --username algumemail@gmail.com --password algumasenha123 --auto-attach --force
 
 
 -- Repositórios  --------------------------------------------------------------------------
