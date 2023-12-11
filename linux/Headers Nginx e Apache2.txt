@@ -17,16 +17,10 @@ add_header X-XSS-Protection "1; mode=block";
 
 # CSP
 add_header X-Content-Type-Options nosniff;
-
 add_header Referrer-Policy "no-referrer-when-downgrade";
-
 add_header Permissions-Policy "geolocation=(), midi=(), sync-xhr=(), microphone=(self), camera=(self), magnetometer=(), gyroscope=(), fullscreen=(self), payment=(self)";
-
-
-add_header Content-Security-Policy "default-src 'self' 'unsafe-inline' 'unsafe-eval' data:  *.google.com *.googleapis.com *.senhafacil.com.br *.visual.com.br *.fonts.googleapis.com *.fonts.gstatic.com;
-
+add_header Content-Security-Policy "default-src 'self' 'unsafe-inline' 'unsafe-eval' data:  *.google.com *.googleapis.com *.senhafacil.com.br *.visual.com.br *.fonts.googleapis.com *.fonts.gstatic.com;";
 add_header Content-Security-Policy "frame-ancestors 'self';";
-
 
 #--- Nginx - SSL ---#
 ssl_ciphers HIGH:!aNULL:!MD5;
