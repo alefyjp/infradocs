@@ -19,8 +19,17 @@ add_header X-XSS-Protection "1; mode=block";
 add_header X-Content-Type-Options nosniff;
 add_header Referrer-Policy "no-referrer-when-downgrade";
 add_header Permissions-Policy "geolocation=(), midi=(), sync-xhr=(), microphone=(self), camera=(self), magnetometer=(), gyroscope=(), fullscreen=(self), payment=(self)";
-add_header Content-Security-Policy "default-src 'self' 'unsafe-inline' 'unsafe-eval' data:  *.google.com *.googleapis.com *.senhafacil.com.br *.visual.com.br *.fonts.googleapis.com *.gstatic.com";
-add_header Content-Security-Policy "frame-ancestors 'self';";
+add_header Content-Security-Policy      "connect-src 'self' *.example.com;
+                                        font-src 'self' *.googleapis.com *.gstatic.com;
+                                        frame-src 'self' *.youtube.com *.vimeo.com *.spotify.com *.dailymotion.com *.snipcart.com;
+                                        script-src 'self' 'unsafe-inline' *.cloudflareinsights.com 'unsafe-eval';
+                                        style-src 'self' *.googleapis.com;
+                                        frame-ancestors 'self';
+                                        img-src 'self' data:;
+                                        manifest-src 'self';
+                                        media-src 'self';
+                                        object-src 'self';
+                                        worker-src 'self';" always;
 
 #--- Nginx - SSL ---#
 ssl_ciphers HIGH:!aNULL:!MD5;
